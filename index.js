@@ -47,7 +47,7 @@ function run() {
   return Promise.all(
     paths.map(p => {
       const fileStream = fs.createReadStream(p.path);
-      const bucketPath = path.join(destinationDir, path.relative(sourceDir, p.path));
+      const bucketPath = path.join(destinationDir, path.relative(sourceDir, p.path)).replace("\\", "/");
       const params = {
         Bucket: BUCKET,
         ACL: 'public-read',
